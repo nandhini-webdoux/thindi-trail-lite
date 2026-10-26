@@ -129,3 +129,57 @@ function displayDishes(dishList) {
 
 // Show all dishes when the page loads
 displayDishes(dishes);
+
+
+const searchInput = document.getElementById("searchInput");
+const categoryFilters = document.getElementById("categoryFilters");
+
+let selectedCategory = "All";
+
+// Create category filter buttons
+const categories = ["All", ...new Set(dishes.map(dish => dish.category))];
+
+categories.forEach(category => {
+  const button = document.createElement("button");
+
+  button.textContent = category;
+  button.className = "filter-btn";
+
+  if (category === "All") {
+    button.classList.add("active");
+  }
+
+  button.addEventListener("click", () => {
+    selectedCategory = category;
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    filterDishes();
+  });
+
+  categoryFilters.appendChild(button);
+});
+
+// Search dishes by name or area
+searchInput.addEventListener("input", filterDishes);
+
+function filterDishes() {
+  const searchText = searchInput.value.toLowerCase().trim();
+
+  const filteredDishes = dishes.filter(dish => {
+    const matchesSearch =
+      dish.name.toLowerCase().includes(searchText) ||
+      dish.area.toLowerCase().includes(searchText);
+
+    const matchesCategory =
+      selectedCategory === "All" ||
+      dish.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  displayDishes(filteredDishes);
+}
