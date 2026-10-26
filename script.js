@@ -355,3 +355,94 @@ function updatePassport() {
 createCategoryFilters();
 displayDishes(dishes);
 updatePassport();
+
+
+"use strict";
+
+// ========================================
+// 10. CALCULATE TRAIL TOTAL
+// ========================================
+
+const trailPrices = document.querySelectorAll(".trail-price");
+const trailTotal = document.getElementById("trailTotal");
+
+if (trailTotal) {
+  const totalPrice = [...trailPrices].reduce((total, cell) => {
+    return total + Number(cell.textContent.replace(/[^\d.]/g, ""));
+  }, 0);
+
+  trailTotal.textContent = `₹${totalPrice}`;
+}
+
+// ========================================
+// 11. CONTACT FORM VALIDATION
+// ========================================
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const name = contactForm.querySelector('[name="name"]');
+    const email = contactForm.querySelector('[name="email"]');
+    const phone = contactForm.querySelector('[name="phone"]');
+    const date = contactForm.querySelector('[name="date"]');
+    const trailType = contactForm.querySelector(
+      'input[name="trailType"]:checked'
+    );
+
+    let errors = [];
+
+    if (!name || name.value.trim() === "") {
+      errors.push("Please enter your name.");
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email || !emailPattern.test(email.value.trim())) {
+      errors.push("Please enter a valid email address.");
+    }
+
+    if (!phone || !/^[0-9]{10}$/.test(phone.value.trim())) {
+      errors.push("Please enter a valid 10-digit phone number.");
+    }
+
+    if (!date || date.value === "") {
+      errors.push("Please select your preferred date.");
+    } else {
+      const selectedDate = new Date(`${date.value}T00:00:00`);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (selectedDate < today) {
+        errors.push("Please choose today or a future date.");
+      }
+    }
+
+    if (!trailType) {
+      errors.push("Please select a trail type.");
+    }
+
+    let messageBox = document.getElementById("formMessage");
+
+    if (!messageBox) {
+      messageBox = document.createElement("p");
+      messageBox.id = "formMessage";
+      messageBox.setAttribute("role", "status");
+      contactForm.appendChild(messageBox);
+    }
+
+    if (errors.length > 0) {
+      messageBox.textContent = errors.join(" ");
+      messageBox.className = "form-error";
+      return;
+    }
+
+    messageBox.textContent =
+      `Thank you, ${name.value.trim()}! Your enquiry has been validated successfully.`;
+    messageBox.className = "form-success";
+
+    contactForm.reset();
+  });
+}

@@ -619,3 +619,21 @@ footer p {
   cursor: not-allowed;
   opacity: 1;
 }
+
+
+/* Contact form validation messages */
+.form-error {
+  margin-top: 16px;
+  padding: 12px;
+  color: #a32626;
+  background: #ffe8e8;
+  border-radius: 8px;
+}
+
+.form-success {
+  margin-top: 16px;
+  padding: 12px;
+  color: #246b3b;
+  background: #e5f6e9;
+  border-radius: 8px;
+}

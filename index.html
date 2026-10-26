@@ -1,214 +1,302 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Explore Chennai street food with Thindi Trail Lite.">
+  <meta
+    name="description"
+    content="Discover Chennai street food with Thindi Trail Lite. Explore local dishes, track your food passport, and plan your food trail."
+  >
 
-    <title>Thindi Trail Lite | Chennai Street Food</title>
+  <title>Thindi Trail Lite | Chennai Street Food Guide</title>
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
 
-    <!-- Navbar -->
-    <header>
-        <nav>
-            <a href="#" class="logo">Thindi Trail Lite</a>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="#home" class="logo">🍽️ Thindi Trail</a>
 
-            <ul>
-                <li><a href="#dishes">Dishes</a></li>
-                <li><a href="#trail">Trail</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+      <ul class="nav-links">
+        <li><a href="#dishes">Dishes</a></li>
+        <li><a href="#trail">Food Trail</a></li>
+        <li><a href="#passport">Passport</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
+  <main>
 
-        <!-- Hero Section -->
-        <section id="home">
-            <h1>Discover Chennai Street Food</h1>
-            <p>Explore local flavours, try delicious dishes, and stamp your food journey!</p>
-            <a href="#dishes">Explore Dishes</a>
-        </section>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="hero-label">YOUR CHENNAI FOOD ADVENTURE</p>
 
-        <!-- Dishes Section -->
-        <section id="dishes">
-            <h2>Explore Street Food</h2>
-            <p>Discover your favourite Chennai street food dishes.</p>
+        <h1>Discover Chennai, One Bite at a Time!</h1>
 
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Search dishes..."
-                aria-label="Search dishes"
-            >
+        <p>
+          Explore delicious street food, discover famous food spots,
+          and collect stamps in your very own food passport.
+        </p>
 
-            <div id="categoryFilters">
-                <!-- Category filter buttons will be added here -->
-            </div>
+        <a href="#dishes" class="hero-btn">Explore Dishes</a>
+      </div>
+    </section>
 
-            <div id="dishContainer">
-                <!-- Dish cards will be added here -->
-            </div>
-        </section>
+    <!-- DISHES SECTION -->
+    <section id="dishes" class="dishes-section">
+      <div class="section-heading">
+        <p class="section-label">TASTE THE CITY</p>
+        <h2>Popular Chennai Dishes</h2>
+        <p>Find your favourite local food and stamp each dish you try.</p>
+      </div>
 
-        <!-- Food Passport Section -->
-        <section id="passport">
-            <h2>My Food Passport</h2>
+      <label for="searchInput" class="visually-hidden">
+        Search dishes by name or area
+      </label>
 
-            <p>Stamps: <span id="stampCount">0</span> of
-                <span id="totalDishes">9</span>
-            </p>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search dishes or areas..."
+        aria-label="Search dishes or areas"
+      >
 
-            <div
-                id="progressBar"
-                role="progressbar"
-                aria-label="Food passport progress"
-                aria-valuemin="0"
-                aria-valuemax="9"
-                aria-valuenow="0"
-            >
-                <div id="progressFill"></div>
-            </div>
+      <div
+        id="categoryFilters"
+        aria-label="Filter dishes by category"
+      ></div>
 
-            <p>Level: <span id="foodLevel">Beginner</span></p>
-        </section>
+      <div id="dishContainer" class="dish-grid">
+        <!-- Dish cards are created by JavaScript -->
+      </div>
+    </section>
 
-        <!-- Food Trail Table -->
-        <section id="trail">
-            <h2>Chennai Food Trail</h2>
+    <!-- FOOD PASSPORT SECTION -->
+    <section id="passport" class="passport-section">
+      <div class="section-heading">
+        <p class="section-label">YOUR FOOD JOURNEY</p>
+        <h2>My Food Passport</h2>
+        <p>Every dish you try brings you closer to becoming a food master!</p>
+      </div>
 
-            <table>
-                <caption>Five stops on your food journey</caption>
+      <p class="stamp-summary">
+        Stamps:
+        <strong><span id="stampCount">0</span> of
+        <span id="totalDishes">9</span></strong>
+      </p>
 
-                <thead>
-                    <tr>
-                        <th scope="col">Stop</th>
-                        <th scope="col">Area</th>
-                        <th scope="col">Dish</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          id="progressFill"
+          role="progressbar"
+          aria-label="Food passport progress"
+          aria-valuemin="0"
+          aria-valuemax="9"
+          aria-valuenow="0"
+        ></div>
+      </div>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mylapore</td>
-                        <td>Idli</td>
-                        <td>₹40</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Triplicane</td>
-                        <td>Masala Dosa</td>
-                        <td>₹80</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Marina Beach</td>
-                        <td>Sundal</td>
-                        <td>₹30</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>T. Nagar</td>
-                        <td>Bajji</td>
-                        <td>₹40</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Anna Nagar</td>
-                        <td>Jigarthanda</td>
-                        <td>₹60</td>
-                    </tr>
-                </tbody>
+      <p class="food-level">
+        Your Level:
+        <strong id="foodLevel">Beginner</strong>
+      </p>
+    </section>
 
-                <tfoot>
-                    <tr>
-                        <th colspan="3" scope="row">Total Price</th>
-                        <td>₹250</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </section>
+    <!-- FOOD TRAIL TABLE -->
+    <section id="trail" class="trail-section">
+      <div class="section-heading">
+        <p class="section-label">PLAN YOUR JOURNEY</p>
+        <h2>My Chennai Food Trail</h2>
+        <p>Five stops to enjoy some local favourites.</p>
+      </div>
 
-        <!-- Contact Form -->
-        <section id="contact">
-            <h2>Plan Your Food Trail</h2>
-            <p>Tell us about your next Chennai food adventure.</p>
+      <div class="table-wrapper">
+        <table id="trailTable">
+          <caption>Five delicious stops around Chennai</caption>
 
-            <form id="contactForm">
+          <thead>
+            <tr>
+              <th scope="col">Stop</th>
+              <th scope="col">Area</th>
+              <th scope="col">Dish</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
 
-                <div>
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name"
-                           placeholder="Enter your name" required>
-                </div>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Mylapore</td>
+              <td>Idli</td>
+              <td class="trail-price">40</td>
+            </tr>
 
-                <div>
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email"
-                           placeholder="Enter your email" required>
-                </div>
+            <tr>
+              <td>2</td>
+              <td>Triplicane</td>
+              <td>Masala Dosa</td>
+              <td class="trail-price">80</td>
+            </tr>
 
-                <div>
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone"
-                           placeholder="Enter your phone number" required>
-                </div>
+            <tr>
+              <td>3</td>
+              <td>Marina Beach</td>
+              <td>Sundal</td>
+              <td class="trail-price">30</td>
+            </tr>
 
-                <div>
-                    <label for="date">Preferred Date</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
+            <tr>
+              <td>4</td>
+              <td>T. Nagar</td>
+              <td>Bajji</td>
+              <td class="trail-price">40</td>
+            </tr>
 
-                <fieldset>
-                    <legend>Choose Your Trail Type</legend>
+            <tr>
+              <td>5</td>
+              <td>Anna Nagar</td>
+              <td>Jigarthanda</td>
+              <td class="trail-price">60</td>
+            </tr>
+          </tbody>
 
-                    <label>
-                        <input type="radio" name="trailType"
-                               value="Solo" required>
-                        Solo Trail
-                    </label>
+          <tfoot>
+            <tr>
+              <th colspan="3" scope="row">Total Price</th>
+              <th id="trailTotal">₹250</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
 
-                    <label>
-                        <input type="radio" name="trailType"
-                               value="Friends">
-                        Friends Trail
-                    </label>
+    <!-- CONTACT FORM -->
+    <section id="contact" class="contact-section">
+      <div class="section-heading">
+        <p class="section-label">LET'S PLAN YOUR TRIP</p>
+        <h2>Plan Your Food Trail</h2>
+        <p>Fill in the form to plan your Chennai food adventure.</p>
+      </div>
 
-                    <label>
-                        <input type="radio" name="trailType"
-                               value="Family">
-                        Family Trail
-                    </label>
-                </fieldset>
+      <form id="contactForm" class="reservation-form" novalidate>
 
-                <div>
-                    <label for="message">Your Message</label>
-                    <textarea id="message" name="message"
-                              placeholder="Tell us about your food preferences"
-                              rows="4"></textarea>
-                </div>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            autocomplete="name"
+            required
+          >
+        </div>
 
-                <button type="submit">Submit Plan</button>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required
+          >
+        </div>
 
-            </form>
-        </section>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="10-digit phone number"
+            autocomplete="tel"
+            inputmode="numeric"
+            pattern="[0-9]{10}"
+            maxlength="10"
+            required
+          >
+        </div>
 
-    </main>
+        <div class="form-group">
+          <label for="date">Preferred Date</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            required
+          >
+        </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Thindi Trail Lite</p>
-        <p>Discover the delicious streets of Chennai!</p>
-    </footer>
+        <fieldset class="form-group">
+          <legend>Who is joining your trail?</legend>
+
+          <div class="radio-options">
+            <label>
+              <input
+                type="radio"
+                name="trailType"
+                value="Solo"
+                required
+              >
+              Solo
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="trailType"
+                value="Friends"
+              >
+              Friends
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="trailType"
+                value="Family"
+              >
+              Family
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="message">Your Message (Optional)</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="Tell us about your food preferences..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Submit Enquiry
+        </button>
+
+        <p id="formMessage" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>🍽️ Thindi Trail Lite — Discover Chennai Through Food!</p>
+    <p>&copy; 2026 Thindi Trail Lite. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
-```
