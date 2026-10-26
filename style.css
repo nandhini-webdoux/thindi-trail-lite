@@ -876,3 +876,55 @@ textarea:focus-visible {
     white-space: nowrap;
   }
 }
+
+/* Spice-Level Filter */
+.spice-filter {
+  margin: 20px auto 28px;
+  text-align: center;
+}
+
+.spice-filter > p {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+#spiceFilters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spice-btn {
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.spice-btn:hover,
+.spice-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.spice-btn:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  #spiceFilters {
+    gap: 8px;
+  }
+
+  .spice-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}

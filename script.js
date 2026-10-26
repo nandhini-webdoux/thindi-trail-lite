@@ -220,6 +220,7 @@ function displayDishes(dishList) {
 // ========================================
 
 let selectedCategory = "All";
+let selectedSpice = "All";
 
 const categories = [
   "All",
@@ -257,6 +258,7 @@ function createCategoryFilters() {
   });
 }
 
+
 function filterDishes() {
   const searchText = searchInput.value.toLowerCase().trim();
 
@@ -269,13 +271,36 @@ function filterDishes() {
       selectedCategory === "All" ||
       dish.category === selectedCategory;
 
-    return matchesSearch && matchesCategory;
+    const matchesSpice =
+      selectedSpice === "All" ||
+      dish.spice === selectedSpice;
+
+    return matchesSearch && matchesCategory && matchesSpice;
   });
 
   displayDishes(filteredDishes);
 }
 
-searchInput.addEventListener("input", filterDishes);
+
+const spiceFilters = document.getElementById("spiceFilters");
+
+spiceFilters.addEventListener("click", event => {
+  const button = event.target.closest(".spice-btn");
+
+  if (!button) return;
+
+  selectedSpice = button.dataset.spice;
+
+  document.querySelectorAll(".spice-btn").forEach(spiceButton => {
+    spiceButton.classList.toggle(
+      "active",
+      spiceButton.dataset.spice === selectedSpice
+    );
+  });
+
+  filterDishes();
+});
+
 
 // ========================================
 // 6. SAVE STAMPS
