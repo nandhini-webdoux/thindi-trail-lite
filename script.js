@@ -183,3 +183,51 @@ function filterDishes() {
 
   displayDishes(filteredDishes);
 }
+
+const stampCountElement = document.getElementById("stampCount");
+const totalDishesElement = document.getElementById("totalDishes");
+const progressFill = document.getElementById("progressFill");
+const foodLevelElement = document.getElementById("foodLevel");
+
+// Store stamped dish IDs for this page session
+const stampedDishes = new Set();
+
+totalDishesElement.textContent = dishes.length;
+
+// Handle clicks on dish stamp buttons
+document.getElementById("dishContainer").addEventListener("click", event => {
+  const button = event.target.closest(".stamp-btn");
+
+  if (!button) return;
+
+  const dishId = Number(button.dataset.id);
+
+  // Prevent stamping the same dish twice
+  if (stampedDishes.has(dishId)) return;
+
+  stampedDishes.add(dishId);
+
+  button.textContent = "✓ Stamped";
+  button.disabled = true;
+
+  updatePassport();
+});
+
+function updatePassport() {
+  const count = stampedDishes.size;
+  const total = dishes.length;
+  const percentage = total === 0 ? 0 : (count / total) * 100;
+
+  stampCountElement.textContent = count;
+  progressFill.style.width = `${percentage}%`;
+
+  if (count >= total) {
+    foodLevelElement.textContent = "Master";
+  } else if (count >= 5) {
+    foodLevelElement.textContent = "Foodie";
+  } else {
+    foodLevelElement.textContent = "Beginner";
+  }
+}
+
+updatePassport();
