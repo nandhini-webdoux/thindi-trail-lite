@@ -337,3 +337,210 @@ nav ul a:hover {
         height: 210px;
     }
 }
+
+/* =================================
+   COMMIT 7: RESPONSIVE DESIGN
+================================= */
+
+/* Search input */
+#searchInput {
+    width: 100%;
+    max-width: 450px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--surface);
+    color: var(--text);
+}
+
+/* Filter buttons container */
+#categoryFilters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0;
+}
+
+#categoryFilters button {
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background-color: var(--surface);
+    color: var(--text);
+}
+
+/* Passport section */
+#passport {
+    max-width: 1152px;
+    margin: 20px auto;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+}
+
+#progressBar {
+    width: 100%;
+    height: 12px;
+    margin: 12px 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: var(--primary-light);
+}
+
+#progressFill {
+    width: 0;
+    height: 100%;
+    border-radius: 20px;
+    background-color: var(--success);
+    transition: width 0.4s ease;
+}
+
+/* Trail table */
+#trail {
+    max-width: 1152px;
+    margin: 30px auto;
+    padding: 40px 24px;
+}
+
+#trail table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface);
+}
+
+#trail caption {
+    padding: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#trail th,
+#trail td {
+    padding: 14px;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+#trail thead {
+    background-color: var(--primary);
+    color: var(--surface);
+}
+
+#trail tfoot {
+    background-color: var(--primary-light);
+    font-weight: bold;
+}
+
+/* Contact form */
+#contact {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 40px 24px;
+}
+
+#contactForm {
+    display: grid;
+    gap: 18px;
+}
+
+#contactForm > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#contactForm input:not([type="radio"]),
+#contactForm textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--surface);
+    color: var(--text);
+}
+
+#contactForm fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+#contactForm fieldset label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#contactForm button {
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary);
+    color: var(--surface);
+    font-weight: bold;
+}
+
+#contactForm button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Footer */
+footer {
+    padding: 28px 20px;
+    background-color: var(--text);
+    color: var(--surface);
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 8px;
+}
+
+/* Tablet layout */
+@media (max-width: 800px) {
+    #passport,
+    #trail,
+    #contact {
+        margin: 20px 16px;
+    }
+
+    #trail {
+        overflow-x: auto;
+    }
+
+    #trail table {
+        min-width: 520px;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 520px) {
+    #passport {
+        padding: 22px 16px;
+    }
+
+    #trail,
+    #contact {
+        padding: 30px 16px;
+    }
+
+    #trail th,
+    #trail td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #contactForm fieldset {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #searchInput {
+        max-width: 100%;
+    }
+}
